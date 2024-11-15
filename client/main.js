@@ -19,9 +19,9 @@ if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
  }
 
  createUnityInstance(document.querySelector("#unity-canvas"), {
-   dataUrl: "Build/minimal-builds.data",
-   frameworkUrl: "Build/minimal-builds.framework.js",
-   codeUrl: "Build/minimal-builds.wasm",
+   dataUrl: "Build/client.data",
+   frameworkUrl: "Build/client.framework.js",
+   codeUrl: "Build/client.wasm",
    streamingAssetsUrl: "StreamingAssets",
    companyName: "Maclo4",
    productName: "DugDig",
