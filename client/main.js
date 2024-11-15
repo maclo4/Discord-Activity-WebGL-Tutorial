@@ -1,8 +1,7 @@
-import {DiscordSDK} from "@discord/embedded-app-sdk";
+import { DiscordSDK } from '@discord/embedded-app-sdk';
 
-const discordSdk = new DiscordSDK(import.meta.env.VITE_DISCORD_CLIENT_ID)
-
-let auth;
+const discordSdk = new DiscordSDK(import.meta.env.VITE_DISCORD_CLIENT_ID);
+let auth = discordSdk.getAuth();
 
 if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
    // Mobile device style: fill the whole browser client area with the game canvas:
@@ -17,19 +16,19 @@ if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
    canvas.style.position = "fixed";
 
    document.body.style.textAlign = "left";
-}
+ }
 
-createUnityInstance(document.querySelector("#unity-canvas"), {
-   dataUrl: "Build/Web.data.gz",
-   frameworkUrl: "Build/Web.framework.js.gz",
-   codeUrl: "Build/Web.wasm.gz",
+ createUnityInstance(document.querySelector("#unity-canvas"), {
+   dataUrl: "Build/minimal-builds.data",
+   frameworkUrl: "Build/minimal-builds.framework.js",
+   codeUrl: "Build/minimal-builds.wasm",
    streamingAssetsUrl: "StreamingAssets",
-   companyName: "DefaultCompany",
-   productName: "Unity Webgl Activity",
+   companyName: "Maclo4",
+   productName: "DugDig",
    productVersion: "1.0",
-   matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+   // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
    // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-}).then(async unityInstance => {
+ }).then(async unityInstance => {
    await setupDiscordSdk();
 
    const member  = await fetch(`https://discord.com/api/v10/users/@me/guilds/${discordSdk.guildId}/member`, {
