@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Unity WebGL Player | DugDig</title>
+    <title>Unity WebGL Player | GoFar</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <link rel="stylesheet" href="TemplateData/style.css" />
     <style>
@@ -86,7 +86,7 @@
               codeUrl: buildUrl + "/client.wasm.gz",
               streamingAssetsUrl: "StreamingAssets",
               companyName: "Maclo4",
-              productName: "DugDig",
+              productName: "GoFar",
               productVersion: "1.0",
               showBanner: unityShowBanner,
             };
@@ -103,6 +103,7 @@
               canvas.style.height = "100%";
             }
 
+            canvas.style.background = "url('" + buildUrl + "/client.jpg') center / cover";
             loadingBar.style.display = "block";
 
             var script = document.createElement("script");
