@@ -53,6 +53,20 @@
             var progressBarFull = document.querySelector("#unity-progress-bar-full");
             var warningBanner = document.querySelector("#unity-warning");
 
+            function purchasePremium(skuId) {
+              if (window.discord?.activity?.purchaseSku) {
+                window.discord.activity.purchaseSku(skuId)
+                  .then(result => {
+                    console.log("Purchase success", result);
+                    // You could notify Unity here too
+                    SendMessage('GameController', 'OnPurchaseSuccess', skuId);
+                  })
+                  .catch(err => {
+                    console.error("Purchase failed", err);
+                    SendMessage('GameController', 'OnPurchaseFailed', err.message);
+                  });
+              }
+            }
 
             function unityShowBanner(msg, type) {
               function updateBannerVisibility() {
@@ -121,5 +135,7 @@
 
             document.body.appendChild(script);
     </script>
+
+    
   </body>
 </html>
