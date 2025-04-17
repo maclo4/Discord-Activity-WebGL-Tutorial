@@ -1,8 +1,18 @@
-// import { DiscordSDK } from '@discord/embedded-app-sdk';
+import { DiscordSDK } from '@discord/embedded-app-sdk';
 
-// const discordSdk = new DiscordSDK(import.meta.env.VITE_DISCORD_CLIENT_ID);
-// let auth = discordSdk.getAuth();
-
+const discordSdk = new DiscordSDK("1295516437112426586");
+let auth = discordSdk.getAuth();
+// Global promise that resolves when Discord SDK is ready
+window.discordReady = new Promise(async (resolve, reject) => {
+    try {
+      await setupDiscordSdk();
+      window.discord = discordSdk;
+      resolve(); // let anything else know it's ready
+    } catch (e) {
+      reject(e);
+    }
+  });
+  
 // if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
 //    // Mobile device style: fill the whole browser client area with the game canvas:
 //    var meta = document.createElement('meta');
