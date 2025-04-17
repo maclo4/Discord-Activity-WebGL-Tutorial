@@ -1,7 +1,6 @@
 import { DiscordSDK } from '@discord/embedded-app-sdk';
 
 const discordSdk = new DiscordSDK("1295516437112426586");
-let auth = discordSdk.getAuth();
 // Global promise that resolves when Discord SDK is ready
 window.discordReady = new Promise(async (resolve, reject) => {
     try {
