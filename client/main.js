@@ -1,12 +1,14 @@
 import { insertCoin, getState, setState, onPlayerJoin, getDiscordClient } from 'playroomkit'
 import * as playroomkit from 'playroomkit';
+//next thing try the other import method
 window.StartDiscordPurchase = async function () {
   try {
+    console.log("$$$$ starting!!")
     await playroomkit.insertCoin({
       gameId: "GcXyi8oDay3SnbSJvtHM",
       discord: true
     });
-
+    console.log("$$$$ coin inserted")
     playroomkit.setState("topScore", 42);
 
     playroomkit.onPlayerJoin((playerState) => {
@@ -14,14 +16,15 @@ window.StartDiscordPurchase = async function () {
     });
 
     const topScore = playroomkit.getState("topScore");
-    console.log("Top Score: " + topScore);
+    console.log("$$$$ Top Score: " + topScore);
 
     const discordClient = playroomkit.getDiscordClient();
+    
+    console.log("$$$$ Purchase started!");
     await discordClient.commands.startPurchase({ sku_id: "1358991165872930949" });
-
-    console.log("Purchase started!");
+    console.log("$$$$ Purchase ended!");
   } catch (e) {
-    console.error("Error in Discord purchase flow:", e);
+    console.error("$$$$ Error in Discord purchase flow:", e);
   }
 };
 
