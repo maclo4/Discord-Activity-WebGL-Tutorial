@@ -3,7 +3,7 @@ import { insertCoin, getState, setState, onPlayerJoin } from 'playroomkit'
 (async () => {
     // Show popup and ask user permissions for their discord information
     await insertCoin({
-    gameId: "1358991165872930949",
+    gameId: "GcXyi8oDay3SnbSJvtHM",
     discord: true
     });
     
