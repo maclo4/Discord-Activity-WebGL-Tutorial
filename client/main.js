@@ -6,19 +6,18 @@ let discordClient;
 //next thing try the other import method
 (async () => {
     console.log("$$$$ %%% starting!!")
-    await playroomkit.insertCoin({
-        gameId: "GcXyi8oDay3SnbSJvtHM",
-        discord: true
-    });
-    console.log("$$$$%%% coin inserted")
-    playroomkit.setState("topScore", 42);
 
-    playroomkit.onPlayerJoin((playerState) => {
-        console.log(playerState.getProfile());
-    });
 
-    const topScore = playroomkit.getState("topScore");
-    console.log("$$$$%%% Top Score: " + topScore);
+    // await playroomkit.discordClient
+    // console.log("$$$$%%% coin inserted")
+    // playroomkit.setState("topScore", 42);
+
+    // playroomkit.onPlayerJoin((playerState) => {
+    //     console.log(playerState.getProfile());
+    // });
+
+    // const topScore = playroomkit.getState("topScore");
+    // console.log("$$$$%%% Top Score: " + topScore);
 
     discordClient = playroomkit.getDiscordClient();
     console.log("$$$$%%% got client???: " + discordClient);
