@@ -1,25 +1,28 @@
 import { insertCoin, getState, setState, onPlayerJoin } from 'playroomkit'
-// Show popup and ask user permissions for their discord information
-await insertCoin({
-  gameId: "<id from playroom portal>",
-  discord: true
-});
- 
-// Print current player's server name and avatar url
-//console.log(me().getProfile())
- 
-// Players of this activity session are now in same room now! Set shared state
-setState("topScore", 42)
- 
-// Called for each player joining the same activity session
-onPlayerJoin((playerState)=>{
-  // Print player's Discord name and avatar url
-  console.log(playerState.getProfile()) // {name: "username", photo: "https://cdn.discord...."}
-})
- 
-// On some other player
-const topScore = getState("topScore")
-console.log("$$$$ top score: " + topScore)
+
+(async () => {
+    // Show popup and ask user permissions for their discord information
+    await insertCoin({
+    gameId: "1358991165872930949",
+    discord: true
+    });
+    
+    // Print current player's server name and avatar url
+    //console.log(me().getProfile())
+    
+    // Players of this activity session are now in same room now! Set shared state
+    setState("topScore", 42)
+    
+    // Called for each player joining the same activity session
+    onPlayerJoin((playerState)=>{
+    // Print player's Discord name and avatar url
+    console.log(playerState.getProfile()) // {name: "username", photo: "https://cdn.discord...."}
+    })
+    
+    // On some other player
+    const topScore = getState("topScore")
+    console.log("$$$$ top score: " + topScore)
+})();
 
 // import { insertCoin, getState, setState, onPlayerJoin, getDiscordClient } from 'playroomkit'
 // import { DiscordSDK } from "@discord/embedded-app-sdk";
