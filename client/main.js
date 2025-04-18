@@ -1,4 +1,4 @@
-import { insertCoin, getState, setState, onPlayerJoin } from 'playroomkit'
+import { insertCoin, getState, setState, onPlayerJoin, getDiscordClient } from 'playroomkit'
 
 (async () => {
     // Show popup and ask user permissions for their discord information
@@ -22,6 +22,14 @@ import { insertCoin, getState, setState, onPlayerJoin } from 'playroomkit'
     // On some other player
     const topScore = getState("topScore")
     console.log("$$$$ top score: " + topScore)
+
+    console.log("$$$$ pre client!!!!: ");
+    
+    const discordClient = getDiscordClient();
+    console.log("$$$$ post client!!!!: ");
+    discordClient.commands.startPurchase("1358991165872930949");
+
+    console.log("$$$$ purchase!!!!: ")
 })();
 
 // import { insertCoin, getState, setState, onPlayerJoin, getDiscordClient } from 'playroomkit'
