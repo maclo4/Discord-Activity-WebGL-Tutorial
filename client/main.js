@@ -7,8 +7,8 @@ let discordClient;
 (async () => {
     console.log("$$$$ %%% starting!!")
 
-
-    // await playroomkit.discordClient
+    
+    //await playroomkit.discordClient
     // console.log("$$$$%%% coin inserted")
     // playroomkit.setState("topScore", 42);
 
@@ -19,8 +19,8 @@ let discordClient;
     // const topScore = playroomkit.getState("topScore");
     // console.log("$$$$%%% Top Score: " + topScore);
 
-    discordClient = playroomkit.getDiscordClient();
-    console.log("$$$$%%% got client???: " + discordClient);
+    //discordClient = playroomkit.getDiscordClient();
+    //console.log("$$$$%%% got client???: " + discordClient);
 
 })();
 
