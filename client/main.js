@@ -3,7 +3,7 @@ import * as playroomkit from 'playroomkit';
 window.StartDiscordPurchase = async function () {
   try {
     await playroomkit.insertCoin({
-      gameId: "<test>",
+      gameId: "GcXyi8oDay3SnbSJvtHM",
       discord: true
     });
 
@@ -17,7 +17,7 @@ window.StartDiscordPurchase = async function () {
     console.log("Top Score: " + topScore);
 
     const discordClient = playroomkit.getDiscordClient();
-    await discordClient.commands.startPurchase({ sku_id: "<test>" });
+    await discordClient.commands.startPurchase({ sku_id: "1358991165872930949" });
 
     console.log("Purchase started!");
   } catch (e) {
