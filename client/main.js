@@ -1,30 +1,37 @@
 import { insertCoin, getState, setState, onPlayerJoin, getDiscordClient } from 'playroomkit'
 import * as playroomkit from 'playroomkit';
+
+let discordClient;
+
 //next thing try the other import method
-window.StartDiscordPurchase = async function () {
-  try {
-    console.log("$$$$ starting!!")
+(async () => {
+    console.log("$$$$ %%% starting!!")
     await playroomkit.insertCoin({
-      gameId: "GcXyi8oDay3SnbSJvtHM",
-      discord: true
+        gameId: "GcXyi8oDay3SnbSJvtHM",
+        discord: true
     });
-    console.log("$$$$ coin inserted")
+    console.log("$$$$%%% coin inserted")
     playroomkit.setState("topScore", 42);
 
     playroomkit.onPlayerJoin((playerState) => {
-      console.log(playerState.getProfile());
+        console.log(playerState.getProfile());
     });
 
     const topScore = playroomkit.getState("topScore");
-    console.log("$$$$ Top Score: " + topScore);
+    console.log("$$$$%%% Top Score: " + topScore);
 
-    const discordClient = playroomkit.getDiscordClient();
-    
-    console.log("$$$$ Purchase started!");
+    discordClient = playroomkit.getDiscordClient();
+    console.log("$$$$%%% got client???: " + discordClient);
+
+})();
+
+window.StartDiscordPurchase = async function () {
+  try {
+    console.log("$$$$%%% Purchase started!");
     await discordClient.commands.startPurchase({ sku_id: "1358991165872930949" });
-    console.log("$$$$ Purchase ended!");
+    console.log("$$$$%%% Purchase ended!");
   } catch (e) {
-    console.error("$$$$ Error in Discord purchase flow:", e);
+    console.error("$$$$%%% Error in Discord purchase flow:", e);
   }
 };
 
