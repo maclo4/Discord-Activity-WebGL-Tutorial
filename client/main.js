@@ -6,31 +6,24 @@ async function startPurchase() {
     await discordClient.commands.startPurchase({sku_id: "1358991165872930949"});
 }
 
-
-// Show popup and ask user permissions for their discord information
-await insertCoin({
-  gameId: "GcXyi8oDay3SnbSJvtHM",
-  discord: true
-});
- 
-// Print current player's server name and avatar url
-console.log(me().getProfile())
- 
-// Players of this activity session are now in same room now! Set shared state
-setState("topScore", 42)
- 
-// Called for each player joining the same activity session
-onPlayerJoin((playerState)=>{
-  // Print player's Discord name and avatar url
-  console.log(playerState.getProfile()) // {name: "username", photo: "https://cdn.discord...."}
-})
- 
-// On some other player
-const topScore = getState("topScore")
-
-
-startPurchase();
-
+(async () => {
+    await insertCoin({
+      gameId: "",
+      discord: true
+    });
+  
+    console.log(me().getProfile());
+  
+    setState("topScore", 42);
+  
+    onPlayerJoin((playerState) => {
+      console.log(playerState.getProfile());
+    });
+  
+    const topScore = getState("topScore");
+  
+    await startPurchase();
+  })();
 
 
 // import { DiscordSDK } from '@discord/embedded-app-sdk';
