@@ -1,36 +1,62 @@
 import { insertCoin, getState, setState, onPlayerJoin, getDiscordClient } from 'playroomkit'
-
-(async () => {
-    // Show popup and ask user permissions for their discord information
-    await insertCoin({
-    gameId: "GcXyi8oDay3SnbSJvtHM",
-    discord: true
+import * as playroomkit from 'playroomkit';
+window.StartDiscordPurchase = async function () {
+  try {
+    await playroomkit.insertCoin({
+      gameId: "<test>",
+      discord: true
     });
-    
-    // Print current player's server name and avatar url
-    //console.log(me().getProfile())
-    
-    // Players of this activity session are now in same room now! Set shared state
-    setState("topScore", 42)
-    
-    // Called for each player joining the same activity session
-    onPlayerJoin((playerState)=>{
-    // Print player's Discord name and avatar url
-    console.log(playerState.getProfile()) // {name: "username", photo: "https://cdn.discord...."}
-    })
-    
-    // On some other player
-    const topScore = getState("topScore")
-    console.log("$$$$ top score: " + topScore)
 
-    console.log("$$$$ pre client!!!!: ");
-    
-    const discordClient = getDiscordClient();
-    console.log("$$$$ post client!!!!: ");
-    await discordClient.commands.startPurchase({sku_id: "1358991165872930949"});
+    playroomkit.setState("topScore", 42);
 
-    console.log("$$$$ purchase!!!!: ")
-})();
+    playroomkit.onPlayerJoin((playerState) => {
+      console.log(playerState.getProfile());
+    });
+
+    const topScore = playroomkit.getState("topScore");
+    console.log("Top Score: " + topScore);
+
+    const discordClient = playroomkit.getDiscordClient();
+    await discordClient.commands.startPurchase({ sku_id: "<test>" });
+
+    console.log("Purchase started!");
+  } catch (e) {
+    console.error("Error in Discord purchase flow:", e);
+  }
+};
+
+
+// (async () => {
+//     // Show popup and ask user permissions for their discord information
+//     await insertCoin({
+//     gameId: "GcXyi8oDay3SnbSJvtHM",
+//     discord: true
+//     });
+    
+//     // Print current player's server name and avatar url
+//     //console.log(me().getProfile())
+    
+//     // Players of this activity session are now in same room now! Set shared state
+//     setState("topScore", 42)
+    
+//     // Called for each player joining the same activity session
+//     onPlayerJoin((playerState)=>{
+//     // Print player's Discord name and avatar url
+//     console.log(playerState.getProfile()) // {name: "username", photo: "https://cdn.discord...."}
+//     })
+    
+//     // On some other player
+//     const topScore = getState("topScore")
+//     console.log("$$$$ top score: " + topScore)
+
+//     console.log("$$$$ pre client!!!!: ");
+    
+//     const discordClient = getDiscordClient();
+//     console.log("$$$$ post client!!!!: ");
+//     await discordClient.commands.startPurchase({sku_id: "1358991165872930949"});
+
+//     console.log("$$$$ purchase!!!!: ")
+// })();
 
 // import { insertCoin, getState, setState, onPlayerJoin, getDiscordClient } from 'playroomkit'
 // import { DiscordSDK } from "@discord/embedded-app-sdk";
