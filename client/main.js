@@ -27,7 +27,7 @@ import { insertCoin, getState, setState, onPlayerJoin, getDiscordClient } from '
     
     const discordClient = getDiscordClient();
     console.log("$$$$ post client!!!!: ");
-    discordClient.commands.startPurchase("1358991165872930949");
+    await discordClient.commands.startPurchase("1358991165872930949");
 
     console.log("$$$$ purchase!!!!: ")
 })();
