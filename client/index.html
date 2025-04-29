@@ -152,12 +152,12 @@
               createUnityInstance(canvas, config, (progress) => {
                 progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
-                window.unityInstance = instance; 
                 loadingBar.style.display = "none";
+                window.unityInstance = unityInstance; 
                 
 
               }).catch((message) => {
-                alert(message);
+                alert("$$$$ ERROR: " + message);
               });
             };
 
