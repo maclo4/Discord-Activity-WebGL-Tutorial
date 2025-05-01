@@ -3,14 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>{{{ PRODUCT_NAME }}}</title>
+    <title>GoFar</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <link rel="stylesheet" href="TemplateData/style.css" />
     
-    #if SHOW_DIAGNOSTICS
-    <link rel="stylesheet" href="<<<TemplateData/diagnostics.css>>>" />
-    <script src="<<<TemplateData/diagnostics.js>>>"></script>
-    #endif
     <script type="module" src="/main.js"></script>
     
     <!-- <script src="https://cdn.discordapp.com/sdk/discord-sdk.js"></script>
@@ -76,7 +72,7 @@
   </head>
   <body>
     <div id="unity-container">
-      <canvas id="unity-canvas" width="{{{ WIDTH }}}" height="{{{ HEIGHT }}}"></canvas>
+      <canvas id="unity-canvas" width="960" height="600"></canvas>
     </div>
     <script>
             var container = document.querySelector("#unity-container");
@@ -111,26 +107,15 @@
               var buildUrl = "Build";
             }
 
-            var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+            var loaderUrl = buildUrl + "/client.loader.js";
             var config = {
-              dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
-              frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
-      #if USE_THREADS
-              workerUrl: buildUrl + "/{{{ WORKER_FILENAME }}}",
-      #endif
-      #if USE_WASM
-              codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
-      #endif
-      #if MEMORY_FILENAME
-              memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
-      #endif
-      #if SYMBOLS_FILENAME
-              symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
-      #endif
+              dataUrl: buildUrl + "/client.data.gz",
+              frameworkUrl: buildUrl + "/client.framework.js.gz",
+              codeUrl: buildUrl + "/client.wasm.gz",
               streamingAssetsUrl: "StreamingAssets",
-              companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
-              productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
-              productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+              companyName: "Maclo4",
+              productName: "GoFar",
+              productVersion: "1.0",
               showBanner: unityShowBanner,
             };
 
@@ -146,9 +131,7 @@
               canvas.style.height = "100%";
             }
 
-      #if BACKGROUND_FILENAME
-            canvas.style.background = "url('" + buildUrl + "/{{{ BACKGROUND_FILENAME.replace(/'/g, '%27') }}}') center / cover";
-      #endif
+            canvas.style.background = "url('" + buildUrl + "/client.jpg') center / cover";
             loadingBar.style.display = "block";
 
             var script = document.createElement("script");
@@ -160,11 +143,6 @@
                 loadingBar.style.display = "none";
                 window.unityInstance = unityInstance; 
                 
-      #if SHOW_DIAGNOSTICS
-                diagnostics_icon.onclick = () => {
-                  unityDiagnostics.openDiagnosticsDiv(unityInstance.GetMemoryInfo);
-                };
-      #endif
 
               }).catch((message) => {
                 alert("$$$$ ERROR: " + message);
