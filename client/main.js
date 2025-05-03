@@ -1,38 +1,38 @@
 import { insertCoin, getState, setState, onPlayerJoin, getDiscordClient } from 'playroomkit'
 import * as playroomkit from 'playroomkit';
 
-let discordClient;
+// let discordClient;
 
-//next thing try the other import method
-(async () => {
-    console.log("$$$$ %%% starting!!")
+// //next thing try the other import method
+// (async () => {
+//     console.log("$$$$ %%% starting!!")
 
     
-    //await playroomkit.discordClient
-    // console.log("$$$$%%% coin inserted")
-    // playroomkit.setState("topScore", 42);
+//     //await playroomkit.discordClient
+//     // console.log("$$$$%%% coin inserted")
+//     // playroomkit.setState("topScore", 42);
 
-    // playroomkit.onPlayerJoin((playerState) => {
-    //     console.log(playerState.getProfile());
-    // });
+//     // playroomkit.onPlayerJoin((playerState) => {
+//     //     console.log(playerState.getProfile());
+//     // });
 
-    // const topScore = playroomkit.getState("topScore");
-    // console.log("$$$$%%% Top Score: " + topScore);
+//     // const topScore = playroomkit.getState("topScore");
+//     // console.log("$$$$%%% Top Score: " + topScore);
 
-    //discordClient = playroomkit.getDiscordClient();
-    //console.log("$$$$%%% got client???: " + discordClient);
+//     //discordClient = playroomkit.getDiscordClient();
+//     //console.log("$$$$%%% got client???: " + discordClient);
 
-})();
+// })();
 
-window.StartDiscordPurchase = async function () {
-  try {
-    console.log("$$$$%%% Purchase started!");
-    await discordClient.commands.startPurchase({ sku_id: "1358991165872930949" });
-    console.log("$$$$%%% Purchase ended!");
-  } catch (e) {
-    console.error("$$$$%%% Error in Discord purchase flow:", e);
-  }
-};
+// window.StartDiscordPurchase = async function () {
+//   try {
+//     console.log("$$$$%%% Purchase started!");
+//     await discordClient.commands.startPurchase({ sku_id: "1358991165872930949" });
+//     console.log("$$$$%%% Purchase ended!");
+//   } catch (e) {
+//     console.error("$$$$%%% Error in Discord purchase flow:", e);
+//   }
+// };
 
 
 // (async () => {
