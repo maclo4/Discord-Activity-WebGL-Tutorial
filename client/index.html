@@ -3,49 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>GoFar</title>
+    <title>Unity WebGL Player | GoFar</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <link rel="stylesheet" href="TemplateData/style.css" />
-    
-    <script type="module" src="/main.js"></script>
-    
-    <!-- <script src="https://cdn.discordapp.com/sdk/discord-sdk.js"></script>
-    <script>
-      window.DiscordSDK = new discordSdk.EmbeddedAppSdk();
-      window.DiscordUser = null;
-  
-      window.DiscordSDK.ready().then(() => {
-        console.log("Discord SDK ready.");
-      });
-    </script> -->
-    
-    <!-- <script src="https://cdn.discordapp.com/sdk/discord-sdk.js"></script>
-    <script>
-      window.DiscordSDK = new discordSdk.EmbeddedAppSdk();
-    
-      async function initDiscord() {
-        await window.DiscordSDK.ready();
-        const { code } = await window.DiscordSDK.commands.authorize({
-          client_id: '1295516437112426586',
-          scopes: ['identify'],
-        });
-    
-        const { access_token } = await window.DiscordSDK.commands.authenticate({ code });
-    
-        const response = await fetch('https://discord.com/api/users/@me', {
-          headers: { Authorization: `Bearer ${access_token}` },
-        });
-        const user = await response.json();
-        window.discordUser = user;
-        console.log("User fetched:", user);
-      }
-    
-      initDiscord();
-    </script> -->
-    <!-- <script>
-      window.discord = new DiscordSDK({ clientId: "1295516437112426586" });
-    </script> -->
-
     <style>
       /* Ensure the body and html take up the full height of the viewport */
       html,
@@ -72,7 +32,12 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width="2556" height="1179" tabindex="-1"></canvas>
+      <canvas
+        id="unity-canvas"
+        width="100%"
+        height="100%"
+        tabindex="-1"
+      ></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -116,9 +81,9 @@
 
             var loaderUrl = buildUrl + "/client.loader.js";
             var config = {
-              dataUrl: buildUrl + "/client.data.br",
-              frameworkUrl: buildUrl + "/client.framework.js.br",
-              codeUrl: buildUrl + "/client.wasm.br",
+              dataUrl: buildUrl + "/client.data",
+              frameworkUrl: buildUrl + "/client.framework.js",
+              codeUrl: buildUrl + "/client.wasm",
               streamingAssetsUrl: "StreamingAssets",
               companyName: "Maclo4",
               productName: "GoFar",
@@ -148,17 +113,13 @@
                 progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
-                window.unityInstance = unityInstance; 
-                
 
               }).catch((message) => {
-                alert("$$$$ ERROR: " + message);
+                alert(message);
               });
             };
 
             document.body.appendChild(script);
     </script>
-
-    
   </body>
 </html>
