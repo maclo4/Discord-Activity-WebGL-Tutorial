@@ -81,9 +81,9 @@
 
             var loaderUrl = buildUrl + "/client.loader.js";
             var config = {
-              dataUrl: buildUrl + "/client.data",
-              frameworkUrl: buildUrl + "/client.framework.js",
-              codeUrl: buildUrl + "/client.wasm",
+              dataUrl: buildUrl + "/client.data.br",
+              frameworkUrl: buildUrl + "/client.framework.js.br",
+              codeUrl: buildUrl + "/client.wasm.br",
               streamingAssetsUrl: "StreamingAssets",
               companyName: "Maclo4",
               productName: "GoFar",
@@ -112,6 +112,7 @@
               createUnityInstance(canvas, config, (progress) => {
                 progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
+                window.unityInstance = unityInstance;
                 loadingBar.style.display = "none";
 
               }).catch((message) => {
